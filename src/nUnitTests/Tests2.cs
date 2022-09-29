@@ -15,14 +15,4 @@ public class Tests2
         Assert.AreEqual(42, result);
         Assert.True(BenchmarkClass2.WasCalled);
     }
-
-    [Test]
-    public void Method3()
-    {
-        ValueTask task = new BenchmarkClass3().GlobalCleanup();
-        bool isAsyncMethod = TaskHelper.TryAwaitTask(task, out _);
-
-        Assert.True(isAsyncMethod);
-        Assert.True(BenchmarkClass3.WasCalled);
-    }
 }

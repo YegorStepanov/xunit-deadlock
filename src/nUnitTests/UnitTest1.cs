@@ -1,7 +1,5 @@
 using NUnit.Framework;
 
-namespace nUnitTests;
-
 public class Tests
 {
     [Test]

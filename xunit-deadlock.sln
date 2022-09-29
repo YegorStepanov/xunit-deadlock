@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nUnitTests", "src\nUnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msTestTests", "src\msTestTests\msTestTests.csproj", "{81E63328-615D-4E4E-89D9-B296CA540232}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "src\Common\Common.csproj", "{200EE8E1-1B64-4575-A935-1DA20CB38A4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{81E63328-615D-4E4E-89D9-B296CA540232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81E63328-615D-4E4E-89D9-B296CA540232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81E63328-615D-4E4E-89D9-B296CA540232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{200EE8E1-1B64-4575-A935-1DA20CB38A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{200EE8E1-1B64-4575-A935-1DA20CB38A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{200EE8E1-1B64-4575-A935-1DA20CB38A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200EE8E1-1B64-4575-A935-1DA20CB38A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

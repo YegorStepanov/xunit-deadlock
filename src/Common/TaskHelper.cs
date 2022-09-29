@@ -1,32 +1,11 @@
-using System;
+﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
-using Xunit;
 
-namespace xunit_deadlock;
+namespace Common;
 
-public class MyTests1
+public static class TaskHelper
 {
-    [Fact]
-    public void Method1()
-    {
-        return;
-        Task<int> task = new TestClass1().Foo();
-        bool isAsyncMethod = TryAwaitTask(task, out object result);
-
-        Assert.True(isAsyncMethod);
-        Assert.Equal(1, result);
-    }
-
-    public class TestClass1
-    {
-        public async Task<int> Foo()
-        {
-            await Task.Delay(1);
-            return 1;
-        }
-    }
-
     public static bool TryAwaitTask(object task, out object result)
     {
         result = null;

@@ -1,22 +1,16 @@
+using System;
 using System.Reflection;
-using Xunit.Abstractions;
+using System.Threading.Tasks;
 
 namespace xunit_deadlock;
 
 public class MyTests1
 {
-    private readonly ITestOutputHelper _testOutputHelper;
-    public MyTests1(ITestOutputHelper testOutputHelper)
-    {
-        _testOutputHelper = testOutputHelper;
-    }
-
     [Fact]
     public void Method1()
     {
-        _testOutputHelper.WriteLine("MyMethod1");
-        var task = new TestClass1().Foo();
-        var isAsyncMethod = TryAwaitTask(task, out var result);
+        Task<int> task = new TestClass1().Foo();
+        bool isAsyncMethod = TryAwaitTask(task, out object result);
 
         Assert.True(isAsyncMethod);
         Assert.Equal(1, result);
@@ -72,7 +66,7 @@ public class MyTests1
         if (voidTaskType.IsInstanceOfType(task))
         {
             task.GetAwaiter().GetResult();
-            return false; //true
+            return false;
         }
 
         var property = task.GetType().GetProperty("Result", BindingFlags.Public | BindingFlags.Instance);

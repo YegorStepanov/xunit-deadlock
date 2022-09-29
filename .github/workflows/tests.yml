@@ -9,7 +9,7 @@ on:
 jobs:
   build-linux:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -38,7 +38,7 @@ jobs:
           path: ${{github.workspace}}/${{env.file_name}}
   build-windows:
     runs-on: windows-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -67,7 +67,7 @@ jobs:
           path: ${{github.workspace}}/${{env.file_name}}
   build-macos:
     runs-on: macos-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     env:
       config: 'Release'
 

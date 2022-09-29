@@ -7,24 +7,24 @@ on:
     branches: [ master ]
 
 jobs:
-  build-core-windows:
-    runs-on: windows-latest
-    timeout-minutes: 3
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.*
-
-      - name: Install dependencies
-        run: dotnet restore
-      
-      #      - name: Build
-      #        run: dotnet build --configuration Release --no-restore
-
-      - name: Test PR
-        run: dotnet test -f net6.0 --configuration Release
+#  build-core-windows:
+#    runs-on: windows-latest
+#    timeout-minutes: 3
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Setup .NET Core
+#        uses: actions/setup-dotnet@v1
+#        with:
+#          dotnet-version: 6.0.*
+#
+#      - name: Install dependencies
+#        run: dotnet restore
+#
+#      #      - name: Build
+#      #        run: dotnet build --configuration Release --no-restore
+#
+#      - name: Test PR
+#        run: dotnet test -f net6.0 --configuration Release
 
   build-framework-windows:
     runs-on: windows-latest
@@ -43,17 +43,17 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
 
-      - name: Navigate to Workspace
-        run: cd $GITHUB_WORKSPACE
-
-      - name: Create Build Directory
-        run: mkdir _build
+#      - name: Navigate to Workspace
+#        run: cd $GITHUB_WORKSPACE
+#
+#      - name: Create Build Directory
+#        run: mkdir _build
 
       - name: Restore Packages
         run: nuget restore xunit-deadlock.csproj
 
       - name: Build solution
-        run: msbuild MySolution.sln -t:rebuild -property:Configuration=Release
+        run: msbuild xunit-deadlock.csproj -t:rebuild -property:Configuration=Release
 
       # - name: Install dependencies
       #   run: dotnet restore
@@ -65,44 +65,44 @@ jobs:
         run: dotnet test -f net480 --configuration Release
 
 
-  build-linux:
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    steps:
-      - uses: actions/checkout@v2
+#  build-linux:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 3
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Setup .NET Core
+#        uses: actions/setup-dotnet@v1
+#        with:
+#          dotnet-version: 6.0.*
+#
+#      - name: Install dependencies
+#        run: dotnet restore
+#
+#      #      - name: Build
+#      #        run: dotnet build --configuration Release --no-restore
+#
+#      - name: Test PR
+#        run: dotnet test -f net6.0 --configuration Release
 
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.*
-
-      - name: Install dependencies
-        run: dotnet restore
-      
-      #      - name: Build
-      #        run: dotnet build --configuration Release --no-restore
-
-      - name: Test PR
-        run: dotnet test -f net6.0 --configuration Release
-  
-  build-macos:
-    runs-on: macos-latest
-    timeout-minutes: 3
-    env:
-      config: 'Release'
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.*
-
-      - name: Install dependencies
-        run: dotnet restore
-      
-      #      - name: Build
-      #        run: dotnet build --configuration Release --no-restore
-
-      - name: Test PR
-        run: dotnet test -f net6.0 --configuration Release
+#  build-macos:
+#    runs-on: macos-latest
+#    timeout-minutes: 3
+#    env:
+#      config: 'Release'
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Setup .NET Core
+#        uses: actions/setup-dotnet@v1
+#        with:
+#          dotnet-version: 6.0.*
+#
+#      - name: Install dependencies
+#        run: dotnet restore
+#
+#      #      - name: Build
+#      #        run: dotnet build --configuration Release --no-restore
+#
+#      - name: Test PR
+#        run: dotnet test -f net6.0 --configuration Release

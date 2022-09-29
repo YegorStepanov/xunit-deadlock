@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net481;net6.0</TargetFrameworks>
+        <TargetFrameworks>net480;net6.0</TargetFrameworks>
         <LangVersion>10</LangVersion>
     </PropertyGroup>
 

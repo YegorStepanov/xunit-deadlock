@@ -22,14 +22,3 @@ public class BenchmarkClass2
         return 42;
     }
 }
-
-public class BenchmarkClass3
-{
-    public static bool WasCalled;
-
-    public async ValueTask GlobalCleanup()
-    {
-        await Task.Delay(1);
-        WasCalled = true;
-    }
-}

@@ -47,7 +47,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
 
       - name: Restore Packages
-        run: nuget restore MySolution.sln
+        run: nuget restore xunit-deadlock.sln
 
       - name: Build solution
         run: msbuild MySolution.sln -t:rebuild -property:Configuration=Release

@@ -7,36 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.*
-
-        # restore dependencies
-      - name: Install dependencies
-        run: dotnet restore
-
-        # build project
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
-        # run tests with built project
-      - name: Test PR
-        run: dotnet test --configuration Release --logger GitHubActions
-
-        # upload report as build artifact
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-        if: ${{always()}}
-        with:
-          name: 'Test Run'
-          path: ${{github.workspace}}/${{env.file_name}}
-  build-windows:
+  build-core-windows:
     runs-on: windows-latest
     timeout-minutes: 5
     steps:
@@ -46,25 +17,71 @@ jobs:
         with:
           dotnet-version: 6.0.*
 
-        # restore dependencies
+      - name: Install dependencies
+        run: dotnet restore
+      
+      #      - name: Build
+      #        run: dotnet build --configuration Release --no-restore
+
+      - name: Test PR
+        run: dotnet test -f net6.0 --configuration Release
+
+  build-framework-windows:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+      
+      #      - name: Setup MSBuild
+      #        uses: microsoft/setup-msbuild@v1
+      #
+      #      - name: Setup NuGet
+      #        uses: NuGet/setup-nuget@v1.0.5
+      #        
+      #      - name: setup-msbuild
+      #        uses: microsoft/setup-msbuild@v1.1
+      #
+      #      - name: Restore Packages
+      #        run: nuget restore MySolution.sln
+      #
+      #      - name: Build solution
+      #        run: msbuild MySolution.sln -t:rebuild -property:Configuration=Release
+      #      
+      - name: Setup .NET Framework
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 4.8.0
+
       - name: Install dependencies
         run: dotnet restore
 
-        # build project
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
+      #      - name: Build
+      #        run: dotnet build --configuration Release --no-restore
 
-        # run tests with built project
       - name: Test PR
-        run: dotnet test --configuration Release --logger GitHubActions
+        run: dotnet test -f net480 --configuration Release
 
-        # upload report as build artifact
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-        if: ${{always()}}
+
+  build-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
         with:
-          name: 'Test Run'
-          path: ${{github.workspace}}/${{env.file_name}}
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+      
+      #      - name: Build
+      #        run: dotnet build --configuration Release --no-restore
+
+      - name: Test PR
+        run: dotnet test -f net6.0 --configuration Release
+  
   build-macos:
     runs-on: macos-latest
     timeout-minutes: 5
@@ -78,22 +95,11 @@ jobs:
         with:
           dotnet-version: 6.0.*
 
-        # restore dependencies
       - name: Install dependencies
         run: dotnet restore
+      
+      #      - name: Build
+      #        run: dotnet build --configuration Release --no-restore
 
-        # build project
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-
-        # run tests with built project
       - name: Test PR
-        run: dotnet test --configuration Release --logger GitHubActions
-
-        # upload report as build artifact
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v2
-        if: ${{always()}}
-        with:
-          name: 'Test Run'
-          path: ${{github.workspace}}/${{env.file_name}}
+        run: dotnet test -f net6.0 --configuration Release

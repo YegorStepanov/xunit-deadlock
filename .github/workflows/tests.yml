@@ -9,7 +9,7 @@ on:
 jobs:
   build-core-windows:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -28,7 +28,7 @@ jobs:
 
   build-framework-windows:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v2
 
@@ -64,7 +64,7 @@ jobs:
 
   build-linux:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     steps:
       - uses: actions/checkout@v2
 
@@ -84,7 +84,7 @@ jobs:
   
   build-macos:
     runs-on: macos-latest
-    timeout-minutes: 5
+    timeout-minutes: 3
     env:
       config: 'Release'
 

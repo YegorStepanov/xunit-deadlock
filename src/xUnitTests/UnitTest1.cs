@@ -9,6 +9,7 @@ public class MyTests1
     [Fact]
     public void Method1()
     {
+        return;
         Task<int> task = new TestClass1().Foo();
         bool isAsyncMethod = TryAwaitTask(task, out object result);
 

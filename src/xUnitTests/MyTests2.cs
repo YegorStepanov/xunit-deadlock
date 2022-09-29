@@ -7,6 +7,7 @@ public class MyTests2
     [Fact]
     public void Method2()
     {
+        return;
         Task<int> task = new TestClass2().GlobalSetup();
         bool isAsyncMethod = MyTests1.TryAwaitTask(task, out var result);
 
@@ -30,6 +31,7 @@ public class MyTests2
     [Fact]
     public void Method3()
     {
+        return;
         ValueTask task = new TestClass3().GlobalCleanup();
         bool isAsyncMethod = MyTests1.TryAwaitTask(task, out _);
 

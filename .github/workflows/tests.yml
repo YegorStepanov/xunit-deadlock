@@ -7,28 +7,34 @@ on:
     branches: [ master ]
 
 jobs:
-#  build-core-windows:
-#    runs-on: windows-latest
-#    timeout-minutes: 3
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      #      - name: Build
-#      #        run: dotnet build --configuration Release --no-restore
-#
-#      - name: Test PR
-#        run: dotnet test -f net6.0 --configuration Release
+  build-core-windows:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      #      - name: Build
+      #        run: dotnet build --configuration Release --no-restore
+
+      - name: MsUnit Test
+        run: dotnet test src\msTestTests -f net6.0 --configuration Release
+
+      - name: NUnit Test
+        run: dotnet test src\nUnitTests -f net6.0 --configuration Release
+
+      - name: XUnit Test
+        run: dotnet test src\xUnitTests -f net6.0 --configuration Release
 
   build-framework-windows:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v2
 
@@ -43,26 +49,20 @@ jobs:
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
 
-#      - name: Navigate to Workspace
-#        run: cd $GITHUB_WORKSPACE
-#
-#      - name: Create Build Directory
-#        run: mkdir _build
-
       - name: Restore Packages
         run: nuget restore xunit-deadlock.sln
 
       - name: Build solution
         run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
 
-      # - name: Install dependencies
-      #   run: dotnet restore
+      - name: MsUnit Test
+        run: dotnet test src\msTestTests -f net480 --configuration Release
 
-      #      - name: Build
-      #        run: dotnet build --configuration Release --no-restore
+      - name: NUnit Test
+        run: dotnet test src\nUnitTests -f net480 --configuration Release
 
-      - name: Test PR
-        run: dotnet test -f net480 --configuration Release
+      - name: XUnit Test
+        run: dotnet test src\xUnitTests -f net480 --configuration Release
 
 
 #  build-linux:

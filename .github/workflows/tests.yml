@@ -29,7 +29,7 @@ jobs:
             
       # run tests with built project
     - name: Test PR      
-      run: dotnet test --no-restore --no-build --configuration $config"
+      run: dotnet test --no-restore --no-build --configuration $config
       
       # upload report as build artifact
     - name: Upload a Build Artifact
@@ -60,7 +60,7 @@ jobs:
             
       # run tests with built project
     - name: Test PR      
-      run: dotnet test --no-restore --no-build --configuration $config"
+      run: dotnet test --no-restore --no-build --configuration $config
       
       # upload report as build artifact
     - name: Upload a Build Artifact
@@ -91,7 +91,7 @@ jobs:
             
       # run tests with built project
     - name: Test PR      
-      run: dotnet test --no-restore --no-build --configuration $config"
+      run: dotnet test --no-restore --no-build --configuration $config
       
       # upload report as build artifact
     - name: Upload a Build Artifact

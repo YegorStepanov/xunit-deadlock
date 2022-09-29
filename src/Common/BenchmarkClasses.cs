@@ -19,3 +19,12 @@ public class BenchmarkClass2
         return 42;
     }
 }
+
+public class BenchmarkClass3
+{
+    public async Task<int> Method()
+    {
+        await Task.Delay(1);
+        return 1;
+    }
+}

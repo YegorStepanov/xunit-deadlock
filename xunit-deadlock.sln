@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xunit-deadlock", "src\xUnitTests\xunit-deadlock.csproj", "{ECB18D5B-EF4B-4ACC-B74E-758D3025D94F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTests", "src\xUnitTests\xUnitTests.csproj", "{ECB18D5B-EF4B-4ACC-B74E-758D3025D94F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nUnitTests", "src\nUnitTests\nUnitTests.csproj", "{9E0ACD74-7145-4F49-86F7-756800178CBD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msTestTests", "src\msTestTests\msTestTests.csproj", "{81E63328-615D-4E4E-89D9-B296CA540232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,13 @@ Global
 		{ECB18D5B-EF4B-4ACC-B74E-758D3025D94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECB18D5B-EF4B-4ACC-B74E-758D3025D94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECB18D5B-EF4B-4ACC-B74E-758D3025D94F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E0ACD74-7145-4F49-86F7-756800178CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E0ACD74-7145-4F49-86F7-756800178CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0ACD74-7145-4F49-86F7-756800178CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E0ACD74-7145-4F49-86F7-756800178CBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E63328-615D-4E4E-89D9-B296CA540232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E63328-615D-4E4E-89D9-B296CA540232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E63328-615D-4E4E-89D9-B296CA540232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E63328-615D-4E4E-89D9-B296CA540232}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

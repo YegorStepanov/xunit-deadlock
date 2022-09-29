@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace xunit_deadlock;
 

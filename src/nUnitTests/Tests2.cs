@@ -7,7 +7,6 @@ public class Tests2
     [Test]
     public void Method2()
     {
-        return;
         Task<int> task = new BenchmarkClass2().GlobalSetup();
         bool isAsyncMethod = TaskHelper.TryAwaitTask(task, out var result);
 
@@ -19,7 +18,6 @@ public class Tests2
     [Test]
     public void Method3()
     {
-        return;
         ValueTask task = new BenchmarkClass3().GlobalCleanup();
         bool isAsyncMethod = TaskHelper.TryAwaitTask(task, out _);
 

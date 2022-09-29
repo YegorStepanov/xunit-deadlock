@@ -11,92 +11,92 @@ jobs:
     runs-on: ubuntu-latest
     env:
       config: 'Release'
-      
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.*    
-      
-      # restore dependencies  
-    - name: Install dependencies
-      run: dotnet restore
-      
-      # build project
-    - name: Build
-      run: dotnet build --configuration $config --no-restore
-            
-      # run tests with built project
-    - name: Test PR      
-      run: dotnet test --no-restore --no-build --configuration $config
-      
-      # upload report as build artifact
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      if: ${{always()}}
-      with:
-        name: 'Test Run'
-        path: ${{github.workspace}}/${{env.file_name}}
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+        # restore dependencies
+      - name: Install dependencies
+        run: dotnet restore
+
+        # build project
+      - name: Build
+        run: dotnet build --configuration $config --no-restore
+
+        # run tests with built project
+      - name: Test PR
+        run: dotnet test --no-restore --no-build --configuration $config
+
+        # upload report as build artifact
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        if: ${{always()}}
+        with:
+          name: 'Test Run'
+          path: ${{github.workspace}}/${{env.file_name}}
   build-windows:
     runs-on: windows-latest
     env:
       config: 'Release'
-      
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.*   
-      
-      # restore dependencies  
-    - name: Install dependencies
-      run: dotnet restore
-      
-      # build project
-    - name: Build
-      run: dotnet build --configuration $config --no-restore
-            
-      # run tests with built project
-    - name: Test PR      
-      run: dotnet test --no-restore --no-build --configuration $config
-      
-      # upload report as build artifact
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      if: ${{always()}}
-      with:
-        name: 'Test Run'
-        path: ${{github.workspace}}/${{env.file_name}}
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+        # restore dependencies
+      - name: Install dependencies
+        run: dotnet restore
+
+        # build project
+      - name: Build
+        run: dotnet build --configuration $config --no-restore
+
+        # run tests with built project
+      - name: Test PR
+        run: dotnet test --no-restore --no-build --configuration $config
+
+        # upload report as build artifact
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        if: ${{always()}}
+        with:
+          name: 'Test Run'
+          path: ${{github.workspace}}/${{env.file_name}}
   build-macos:
     runs-on: macos-latest
     env:
       config: 'Release'
-      
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.*    
-      
-      # restore dependencies  
-    - name: Install dependencies
-      run: dotnet restore
-      
-      # build project
-    - name: Build
-      run: dotnet build --configuration $config --no-restore
-            
-      # run tests with built project
-    - name: Test PR      
-      run: dotnet test --no-restore --no-build --configuration $config
-      
-      # upload report as build artifact
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      if: ${{always()}}
-      with:
-        name: 'Test Run'
-        path: ${{github.workspace}}/${{env.file_name}}
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+        # restore dependencies
+      - name: Install dependencies
+        run: dotnet restore
+
+        # build project
+      - name: Build
+        run: dotnet build --configuration $config --no-restore
+
+        # run tests with built project
+      - name: Test PR
+        run: dotnet test --no-restore --no-build --configuration $config
+
+        # upload report as build artifact
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2
+        if: ${{always()}}
+        with:
+          name: 'Test Run'
+          path: ${{github.workspace}}/${{env.file_name}}

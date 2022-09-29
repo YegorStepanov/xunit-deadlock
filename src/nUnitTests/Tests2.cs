@@ -2,6 +2,7 @@
 using Common;
 using NUnit.Framework;
 
+[Parallelizable(ParallelScope.Self)]
 public class Tests2
 {
     [Test]

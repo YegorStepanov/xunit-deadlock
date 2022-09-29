@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Common;
 using NUnit.Framework;
 
+[Parallelizable(ParallelScope.Self)]
 public class Tests1
 {
     [Test]

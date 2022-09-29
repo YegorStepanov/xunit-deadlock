@@ -6,6 +6,7 @@ namespace Common;
 
 public static class TaskHelper
 {
+    // returns true if task
     public static bool TryAwaitTask(object task, out object result)
     {
         result = null;

@@ -9,7 +9,7 @@ on:
 jobs:
   build-windows-framework-msTest:
     runs-on: windows-latest
-    timeout-minutes: 10
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
 
@@ -35,7 +35,7 @@ jobs:
 
   build-windows-framework-nUnit:
     runs-on: windows-latest
-    timeout-minutes: 10
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
 
@@ -61,7 +61,7 @@ jobs:
 
   build-windows-framework-xUnit:
     runs-on: windows-latest
-    timeout-minutes: 10
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
 
@@ -89,7 +89,7 @@ jobs:
 
   build-windows-core-msTest:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -105,7 +105,7 @@ jobs:
 
   build-windows-core-nUnit:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -121,7 +121,7 @@ jobs:
 
   build-windows-core-xUnit:
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -137,7 +137,7 @@ jobs:
 
   build-linux-core-msTest:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -153,7 +153,7 @@ jobs:
 
   build-linux-core-nUnit:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -169,7 +169,7 @@ jobs:
 
   build-linux-core-xUnit:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -185,7 +185,7 @@ jobs:
 
   build-macos-core-msTest:
     runs-on: macos-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -201,7 +201,7 @@ jobs:
 
   build-macos-core-nUnit:
     runs-on: macos-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core
@@ -217,7 +217,7 @@ jobs:
 
   build-macos-core-xUnit:
     runs-on: macos-latest
-    timeout-minutes: 5
+    timeout-minutes: 7
     steps:
       - uses: actions/checkout@v2
       - name: Setup .NET Core

@@ -38,13 +38,10 @@ jobs:
           dotnet-version: 6.0.*
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
+        uses: microsoft/setup-msbuild@v1.1
 
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
-
-      - name: setup-msbuild
-        uses: microsoft/setup-msbuild@v1.1
 
       - name: Navigate to Workspace
         run: cd $GITHUB_WORKSPACE
@@ -53,7 +50,7 @@ jobs:
         run: mkdir _build
 
       - name: Restore Packages
-        run: nuget restore xunit-deadlock.sln
+        run: nuget restore xunit-deadlock.csproj
 
       - name: Build solution
         run: msbuild MySolution.sln -t:rebuild -property:Configuration=Release

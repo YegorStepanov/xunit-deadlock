@@ -4,7 +4,7 @@ namespace Common;
 
 public class BenchmarkClass1
 {
-    public async Task<int> Foo()
+    public async Task<int> Method()
     {
         await Task.Delay(1);
         return 1;
@@ -13,12 +13,9 @@ public class BenchmarkClass1
 
 public class BenchmarkClass2
 {
-    public static bool WasCalled;
-
-    public async Task<int> GlobalSetup()
+    public async Task<int> Method()
     {
         await Task.Delay(1);
-        WasCalled = true;
         return 42;
     }
 }

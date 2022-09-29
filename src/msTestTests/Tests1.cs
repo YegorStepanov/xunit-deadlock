@@ -8,7 +8,7 @@ public class Tests1
     [TestMethod]
     public void Method1()
     {
-        Task<int> task = new BenchmarkClass1().Foo();
+        Task<int> task = new BenchmarkClass1().Method();
         bool isAsyncMethod = TaskHelper.TryAwaitTask(task, out object result);
 
         Assert.IsTrue(isAsyncMethod);

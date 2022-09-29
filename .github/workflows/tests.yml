@@ -50,10 +50,10 @@ jobs:
 #        run: mkdir _build
 
       - name: Restore Packages
-        run: nuget restore xunit-deadlock.csproj
+        run: nuget restore xunit-deadlock.sln
 
       - name: Build solution
-        run: msbuild xunit-deadlock.csproj -t:rebuild -property:Configuration=Release
+        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
 
       # - name: Install dependencies
       #   run: dotnet restore

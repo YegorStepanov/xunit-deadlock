@@ -7,235 +7,226 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  msTest-win-framework:
     runs-on: windows-latest
-
+    timeout-minutes: 10
     steps:
-      - name: setup-msbuild
-        uses: microsoft/setup-msbuild@v1
+      - uses: actions/checkout@v2
 
-      - name: Run a one-line script
-        run: '& "$(vswhere -property installationPath)\Common7\IDE\MSTest.exe" /help'
-#  msTest-win-framework:
-#    runs-on: windows-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#
-#      - name: Setup .NET Framework
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Setup MSBuild
-#        uses: microsoft/setup-msbuild@v1.1
-#
-#      - name: Setup NuGet
-#        uses: NuGet/setup-nuget@v1.0.5
-#
-#      - name: Restore Packages
-#        run: nuget restore xunit-deadlock.sln
-#
-#      - name: Build solution
-#        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
-#
-#      - name: MsTest Test
-#        run: dotnet test src/msTestTests -f net480 --configuration Release
-#
-#  nUnit-win-framework:
-#    runs-on: windows-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#
-#      - name: Setup .NET Framework
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Setup MSBuild
-#        uses: microsoft/setup-msbuild@v1.1
-#
-#      - name: Setup NuGet
-#        uses: NuGet/setup-nuget@v1.0.5
-#
-#      - name: Restore Packages
-#        run: nuget restore xunit-deadlock.sln
-#
-#      - name: Build solution
-#        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
-#
-#      - name: NUnit Test
-#        run: dotnet test src/nUnitTests -f net480 --configuration Release
-#
-#  xUnit-win-framework:
-#    runs-on: windows-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#
-#      - name: Setup .NET Framework
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Setup MSBuild
-#        uses: microsoft/setup-msbuild@v1.1
-#
-#      - name: Setup NuGet
-#        uses: NuGet/setup-nuget@v1.0.5
-#
-#      - name: Restore Packages
-#        run: nuget restore xunit-deadlock.sln
-#
-#      - name: Build solution
-#        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
-#
-#      - name: XUnit Test
-#        run: dotnet test src/xUnitTests -f net480 --configuration Release
-#
-#
-#
-#  msTest-win-core:
-#    runs-on: windows-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: MsTest Test
-#        run: dotnet test src/msTestTests -f net6.0 --configuration Release
-#
-#  nUnit-win-core:
-#    runs-on: windows-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: NUnit Test
-#        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
-#
-#  xUnit-win-core:
-#    runs-on: windows-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: XUnit Test
-#        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
-#
-#  msTest-linux-core:
-#    runs-on: ubuntu-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: MsTest Test
-#        run: dotnet test src/msTestTests -f net6.0 --configuration Release
-#
-#  nUnit-linux-core:
-#    runs-on: ubuntu-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: NUnit Test
-#        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
-#
-#  xUnit-linux-core:
-#    runs-on: ubuntu-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: XUnit Test
-#        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
-#
-#  msTest-macos-core:
-#    runs-on: macos-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: MsTest Test
-#        run: dotnet test src/msTestTests -f net6.0 --configuration Release
-#
-#  nUnit-macos-core:
-#    runs-on: macos-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: NUnit Test
-#        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
-#
-#  xUnit-macos-core:
-#    runs-on: macos-latest
-#    timeout-minutes: 10
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: 6.0.*
-#
-#      - name: Install dependencies
-#        run: dotnet restore
-#
-#      - name: XUnit Test
-#        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
+      - name: Setup .NET Framework
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Restore Packages
+        run: nuget restore xunit-deadlock.sln
+
+      - name: Build solution
+        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
+
+      - name: MsTest Test
+        run: dotnet test src/msTestTests -f net480 --configuration Release
+
+  nUnit-win-framework:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Framework
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Restore Packages
+        run: nuget restore xunit-deadlock.sln
+
+      - name: Build solution
+        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
+
+      - name: NUnit Test
+        run: dotnet test src/nUnitTests -f net480 --configuration Release
+
+  xUnit-win-framework:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Framework
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
+
+      - name: Restore Packages
+        run: nuget restore xunit-deadlock.sln
+
+      - name: Build solution
+        run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
+
+      - name: XUnit Test
+        run: dotnet test src/xUnitTests -f net480 --configuration Release
+
+
+
+  msTest-win-core:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: MsTest Test
+        run: dotnet test src/msTestTests -f net6.0 --configuration Release
+
+  nUnit-win-core:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: NUnit Test
+        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
+
+  xUnit-win-core:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: XUnit Test
+        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
+
+  msTest-linux-core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: MsTest Test
+        run: dotnet test src/msTestTests -f net6.0 --configuration Release
+
+  nUnit-linux-core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: NUnit Test
+        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
+
+  xUnit-linux-core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: XUnit Test
+        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
+
+  msTest-macos-core:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: MsTest Test
+        run: dotnet test src/msTestTests -f net6.0 --configuration Release
+
+  nUnit-macos-core:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: NUnit Test
+        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
+
+  xUnit-macos-core:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.*
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: XUnit Test
+        run: dotnet test src/xUnitTests -f net6.0 --configuration Release

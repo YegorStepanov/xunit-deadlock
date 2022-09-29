@@ -31,7 +31,7 @@ jobs:
         run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
 
       - name: MsTest Test
-        run: dotnet test src\msTestTests -f net480 --configuration Release
+        run: dotnet test src/msTestTests -f net480 --configuration Release
 
   build-windows-framework-nUnit:
     runs-on: windows-latest
@@ -57,7 +57,7 @@ jobs:
         run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
 
       - name: NUnit Test
-        run: dotnet test src\nUnitTests -f net480 --configuration Release
+        run: dotnet test src/nUnitTests -f net480 --configuration Release
 
   build-windows-framework-xUnit:
     runs-on: windows-latest
@@ -83,7 +83,7 @@ jobs:
         run: msbuild xunit-deadlock.sln -t:rebuild -property:Configuration=Release
 
       - name: XUnit Test
-        run: dotnet test src\xUnitTests -f net480 --configuration Release
+        run: dotnet test src/xUnitTests -f net480 --configuration Release
 
 
 
@@ -101,7 +101,7 @@ jobs:
         run: dotnet restore
 
       - name: MsTest Test
-        run: dotnet test src\msTestTests -f net6.0 --configuration Release
+        run: dotnet test src/msTestTests -f net6.0 --configuration Release
 
   build-windows-core-nUnit:
     runs-on: windows-latest
@@ -117,7 +117,7 @@ jobs:
         run: dotnet restore
 
       - name: NUnit Test
-        run: dotnet test src\nUnitTests -f net6.0 --configuration Release
+        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
 
   build-windows-core-xUnit:
     runs-on: windows-latest
@@ -133,7 +133,7 @@ jobs:
         run: dotnet restore
 
       - name: XUnit Test
-        run: dotnet test src\xUnitTests -f net6.0 --configuration Release
+        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
 
   build-linux-core-msTest:
     runs-on: ubuntu-latest
@@ -149,7 +149,7 @@ jobs:
         run: dotnet restore
 
       - name: MsTest Test
-        run: dotnet test src\msTestTests -f net6.0 --configuration Release
+        run: dotnet test src/msTestTests -f net6.0 --configuration Release
 
   build-linux-core-nUnit:
     runs-on: ubuntu-latest
@@ -165,7 +165,7 @@ jobs:
         run: dotnet restore
 
       - name: NUnit Test
-        run: dotnet test src\nUnitTests -f net6.0 --configuration Release
+        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
 
   build-linux-core-xUnit:
     runs-on: ubuntu-latest
@@ -181,7 +181,7 @@ jobs:
         run: dotnet restore
 
       - name: XUnit Test
-        run: dotnet test src\xUnitTests -f net6.0 --configuration Release
+        run: dotnet test src/xUnitTests -f net6.0 --configuration Release
 
   build-macos-core-msTest:
     runs-on: macos-latest
@@ -197,7 +197,7 @@ jobs:
         run: dotnet restore
 
       - name: MsTest Test
-        run: dotnet test src\msTestTests -f net6.0 --configuration Release
+        run: dotnet test src/msTestTests -f net6.0 --configuration Release
 
   build-macos-core-nUnit:
     runs-on: macos-latest
@@ -213,7 +213,7 @@ jobs:
         run: dotnet restore
 
       - name: NUnit Test
-        run: dotnet test src\nUnitTests -f net6.0 --configuration Release
+        run: dotnet test src/nUnitTests -f net6.0 --configuration Release
 
   build-macos-core-xUnit:
     runs-on: macos-latest
@@ -229,4 +229,4 @@ jobs:
         run: dotnet restore
 
       - name: XUnit Test
-        run: dotnet test src\xUnitTests -f net6.0 --configuration Release
+        run: dotnet test src/xUnitTests -f net6.0 --configuration Release

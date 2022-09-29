@@ -28,7 +28,7 @@ jobs:
 
   build-framework-windows:
     runs-on: windows-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v2
 
